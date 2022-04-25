@@ -2,30 +2,25 @@ import './App.css';
 import React from "react"
 import Home from "./components/home/home"
 import Detail from './components/detail/detail';
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Link,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route} from "react-router-dom";
+import {Container, Navbar} from "react-bootstrap"
 
 function App() {
   return (
-    <BrowserRouter>
-      <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/detail">Detail</Link>
-          </li>
-         
-        </ul>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/detail" element={<Detail />} />
-      </Routes>
-    </BrowserRouter>
+      <div className='App-header'>
+        <BrowserRouter >
+            <Navbar expand="lg" bg="dark"  className='navbar'>
+              <Container>
+                <Navbar.Brand href="/" style={{textDecoration:"none", color:"#ddd"}}>Characters</Navbar.Brand>
+              </Container>
+            </Navbar>
+              
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/:char_id" element={<Detail />} />
+            </Routes>
+        </BrowserRouter>
+      </div>
   );
 }
 
