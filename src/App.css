@@ -1,14 +1,78 @@
-.App {
-  text-align: center;
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
+  color:#ddd
+  
+}
+.navbar{
+  margin-bottom: 1%;
+  padding-top: 1%;
+  padding-left: 20px;
+  font-size:xx-large;
+  font-weight: 500;
+}
+
+.char-img{
+  width: 85%;
+  margin-top: 28px;
+}
+
+.char-btn{
+  margin-left: 45%;
+  margin-bottom: 100px;
+  font-weight: 500;
+}
+.my-masonry-grid {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-left: -20px;
+ 
+}
+.my-masonry-grid_column {
+  border-left: 20px solid transparent;
+  background-clip: padding-box;
+}
+
+/* Style your items */
+.my-masonry-grid_column > div { /* change div to reference your elements in <masonry> */
+  background: #ddd;
+  margin: 10px;
+  margin-bottom: 20px;
+  text-decoration-line: none !important;
+  
+}
+.my-masonry-grid_column > div:hover{
+  background-color: rgb(148, 147, 147);
+}
+
+.my-masonry-grid_column > div> a{
+  padding: 20px;
+  padding-bottom: 5px !important;
+  text-decoration-line: none;
+  color:black;
+}
+
+.my-masonry-grid_column > div> a> h4{
+margin-left: 20px;
+font-size: medium;
+
+}
+.my-masonry-grid_column > div> a:hover{
+color:#ddd;
+}
+
+.detail-img{
+  width: 50%;
+  margin-top: 5%;
+  border-radius: 2%;
+  box-shadow: 60px -16px #ddd;
+}
+.fixed{
+  
+  position: fixed;
+  bottom: 0;
+  right: 1;
+  width: 100%;
+  background-color: #181b20;
+  font-size:x-small;
+  padding-left: 46%;
 }
