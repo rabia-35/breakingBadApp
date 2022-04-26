@@ -25,9 +25,7 @@ function Home() {
 //When the Load More button is pressed, fetchCharacters parameter is sent and pageIncrements runs
   const handleClick=async()=>{
     await dispatch(pageIncrement())
-    if(status==="idle"){
     await dispatch(fetchCharacters(page))
-    }
   }
  
 
@@ -49,7 +47,7 @@ function Home() {
         {
           items.map(item=>(
             <div key={item.char_id} >
-               <Link to={`/:${item.char_id}`}>
+               <Link to={`/char/${item.char_id}`}>
                   <img  alt={item.name} src={item.img} className="char-img" />
                   <h4>{item.name}</h4>
               </Link>
