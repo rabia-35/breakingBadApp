@@ -4,6 +4,7 @@ import Home from "./components/home/home"
 import Detail from './components/detail/detail';
 import { BrowserRouter, Routes, Route} from "react-router-dom";
 import {Container, Navbar} from "react-bootstrap"
+import Footer from './components/footer/footer';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
               <Route path="/:char_id" element={<Detail />} />
             </Routes>
         </BrowserRouter>
+        <Footer />
       </div>
   );
 }
