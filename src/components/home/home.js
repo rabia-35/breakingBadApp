@@ -11,29 +11,27 @@ function Home() {
   const isLoading=useSelector(state=>state.character.isLoading)
   const error=useSelector(state=>state.character.error)
   const page=useSelector(state=>state.character.page)
+  const hasNextPage=useSelector(state=>state.character.hasNextPage)
   const dispatch=useDispatch();
 
+//Let fetchCharacters run when the page is refreshed
   useEffect(() => {
    dispatch(fetchCharacters())
   }, [dispatch])  
 
+//When the Load More button is pressed, fetchCharacters parameter is sent and pageIncrements runs
   const handleClick=async()=>{
     await dispatch(pageIncrement())
     await dispatch(fetchCharacters(page))
   }
+ 
 
-/** Display of loading and error states on the page -start-*/
-  if(isLoading){
-    return(
-      <div className="spinner-border text-light" role="status" style={{padding:"5%", marginLeft:"45%"}}>
-        <span className="visually-hidden ">Loading...</span>
-      </div>
-    )} 
+/** Display of error states on the page -start-*/
 
     if(error){
       return <div className='text-light ms-5'>Error:{error}</div>
     }
-   /** Display of loading and error states on the page -end-*/
+/** Display of loading and error states on the page -end-*/
 
 
   return (
@@ -55,8 +53,22 @@ function Home() {
         }
       </Masonry>
         {
-          items.length!==62 && (
-            <Button variant='light' className='char-btn' onClick={handleClick} >Load More ({page-2})</Button>
+          isLoading && (
+            <div className="spinner-border " role="status" style={{padding:"3%", marginLeft:"45%"}}>
+        <span className="visually-hidden ">Loading...</span>
+      </div>
+          )
+        }
+        {
+          hasNextPage && !isLoading && (
+            <Button variant='light' className='char-btn' onClick={handleClick} >Load More ({page-1})</Button>
+          )
+        }
+        {
+          !hasNextPage && (
+            <div className=' mt-2' style={{marginLeft:"40%"}} >
+              There is nothing to be shown
+            </div>
           )
         }
       </Container>
