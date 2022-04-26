@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 function Home() {
   const items=useSelector(state=>state.character.items)
-  const isLoading=useSelector(state=>state.character.isLoading)
+  const status=useSelector(state=>state.character.status)
   const error=useSelector(state=>state.character.error)
   const page=useSelector(state=>state.character.page)
   const hasNextPage=useSelector(state=>state.character.hasNextPage)
@@ -16,13 +16,18 @@ function Home() {
 
 //Let fetchCharacters run when the page is refreshed
   useEffect(() => {
+    if(status=== "idle"){
    dispatch(fetchCharacters())
-  }, [dispatch])  
+    }
+  }, [dispatch, status]) 
+
 
 //When the Load More button is pressed, fetchCharacters parameter is sent and pageIncrements runs
   const handleClick=async()=>{
     await dispatch(pageIncrement())
+    if(status==="idle"){
     await dispatch(fetchCharacters(page))
+    }
   }
  
 
@@ -53,14 +58,14 @@ function Home() {
         }
       </Masonry>
         {
-          isLoading && (
+          status==="loading" && (
             <div className="spinner-border " role="status" style={{padding:"3%", marginLeft:"45%"}}>
         <span className="visually-hidden ">Loading...</span>
       </div>
           )
         }
         {
-          hasNextPage && !isLoading && (
+          hasNextPage && status==="succeeded" && (
             <Button variant='light' className='char-btn' onClick={handleClick} >Load More ({page-1})</Button>
           )
         }
