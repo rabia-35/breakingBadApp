@@ -16,7 +16,7 @@ function App() {
             </Navbar>
               
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route exact path="/" element={<Home />} />
               <Route path="/:char_id" element={<Detail />} />
             </Routes>
         </BrowserRouter>
