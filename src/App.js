@@ -1,23 +1,20 @@
 import './App.css';
 import React from "react"
-import Home from "./components/home/home"
-import Detail from './components/detail/detail';
+import Home from "./components/pages/home"
+import Detail from './components/pages/detail';
 import { BrowserRouter, Routes, Route} from "react-router-dom";
-import {Container, Navbar} from "react-bootstrap"
-import Footer from './components/footer/footer';
+import Footer from './components/footer';
+import Quotes from './components/pages/quotes';
+import Navbar from './components/navbar';
 
 function App() {
   return (
       <div className='App-header'>
-        <BrowserRouter >
-            <Navbar expand="lg" bg="dark"  className='navbar'>
-              <Container>
-                <Navbar.Brand href="/" style={{textDecoration:"none", color:"#ddd"}}>Characters</Navbar.Brand>
-              </Container>
-            </Navbar>
-              
+        <BrowserRouter > 
+            <Navbar /> 
             <Routes>
               <Route exact path="/" element={<Home />} />
+              <Route path="/quotes" element={<Quotes />} />
               <Route path="/char/:char_id" element={<Detail />} />
             </Routes>
         </BrowserRouter>
