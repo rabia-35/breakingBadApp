@@ -5,11 +5,7 @@
   
 }
 .navbar{
-  margin-bottom: 1%;
-  padding-top: 1%;
-  padding-left: 20px;
-  font-size:xx-large;
-  font-weight: 500;
+  font-size:large;
 }
 
 .char-img{
@@ -75,4 +71,7 @@ color:#ddd;
   background-color: #181b20;
   font-size:x-small;
   padding-left: 46%;
+}
+.quote{
+  padding-top: 2%;
 }
